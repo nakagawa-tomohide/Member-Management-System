@@ -40,6 +40,7 @@
                 <th>名前</th>
                 <th>電話番号</th>
                 <th>メールアドレス</th>
+                <th>@sortablelink('created_at', '登録日時')</th>
             </tr>
         </thead>
 
@@ -49,6 +50,7 @@
                 <td class="content">{{ $member->name }}</td>
                 <td class="content">{{ $member->phone }}</td>
                 <td class="content">{{ $member->email }}</td>
+                <td class="content">{{ $member->created_at->isoFormat('YYYY年MM月DD日 HH時mm分') }}</td>
                 <td class="edit-btn"><a href="/edit/{{ $member->id }}">>> 編集</a></td>
             </tr>
             @endforeach
@@ -61,7 +63,7 @@
 
 <!-- ページネーション -->
 <div class="pagination">
-    {{ $members->links() }}
+    {{ $members->appends(request()->query())->links() }}
 </div>
 @endsection
 <!-- </body>

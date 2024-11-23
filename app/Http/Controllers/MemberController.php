@@ -17,7 +17,7 @@ class MemberController extends Controller
      */
     public function top()
     {
-        $members = Member::paginate(10);
+        $members = Member::sortable()->paginate(10);
         //$members = Member::all();
         return view('/top', compact('members'));
     }
