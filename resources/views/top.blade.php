@@ -41,6 +41,7 @@
                 <th>電話番号</th>
                 <th>メールアドレス</th>
                 <th>@sortablelink('created_at', '登録日時')</th>
+                <th>ステータス</th>
             </tr>
         </thead>
 
@@ -51,7 +52,12 @@
                 <td class="content">{{ $member->phone }}</td>
                 <td class="content">{{ $member->email }}</td>
                 <td class="content">{{ $member->created_at->isoFormat('YYYY年MM月DD日 HH時mm分') }}</td>
-                <td class="edit-btn"><a href="/edit/{{ $member->id }}">>> 編集</a></td>
+                <td class="content">{{ $member->status === 'active' ? '有効' : '無効' }}
+                    <a href="{{ route('memberToggleStatus', $member->id) }}" >
+                        {{ $member->status === 'active' ? '無効にする' : '有効にする' }}
+                    </a>
+                </td>
+                <td class="edit-btn"><a href="{{ route('edit', $member->id) }}">>> 編集</a></td>
             </tr>
             @endforeach
         </tbody>

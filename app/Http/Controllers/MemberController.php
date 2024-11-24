@@ -127,4 +127,13 @@ class MemberController extends Controller
 
         return view('/top', compact('members', 'keyword'));
     }
+
+    public function memberToggleStatus(Request $request)
+    {
+        $member = Member::findOrFail($request->id);
+        $member->status = $member->status === 'active' ? 'inactive' : 'active';
+        $member->save();
+
+        return redirect('/top');
+    }
 }

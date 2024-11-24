@@ -26,3 +26,4 @@ Route::get('/edit/{id}', [MemberController::class, 'edit'])->name('edit');
 Route::post('/memberEdit/{id}', [MemberController::class, 'memberEdit'])->name('memberEdit');
 Route::delete('/memberDelete/{id}', [MemberController::class, 'memberDelete'])->name('memberDelete');
 Route::get('/search', [MemberController::class, 'search'])->name('search');
+Route::get('/memberToggleStatus/{id}', [MemberController::class, 'memberToggleStatus'])->name('memberToggleStatus');
