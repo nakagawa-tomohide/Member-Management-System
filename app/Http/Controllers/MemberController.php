@@ -128,6 +128,12 @@ class MemberController extends Controller
         return view('/top', compact('members', 'keyword'));
     }
 
+    /**
+     * ステータス切り替え機能
+     *
+     * @param Request $request
+     * @return void
+     */
     public function memberToggleStatus(Request $request)
     {
         $member = Member::findOrFail($request->id);
