@@ -123,7 +123,7 @@ class MemberController extends Controller
                 ->orWhere('email', 'LIKE', "%{$keyword}%");
         }
 
-        $members = $query->paginate(10);
+        $members = $query->sortable()->paginate(10);
 
         return view('/top', compact('members', 'keyword'));
     }
